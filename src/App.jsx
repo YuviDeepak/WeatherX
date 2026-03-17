@@ -1,119 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const cities = [
+    "Tiruchirappalli",
+    "Chennai",
+    "Madurai",
+    "Coimbatore",
+    "Tirunelveli",
+    "Kanyakumari",
+    "Kodaikanal",
+    "Udhagamandalam",
+    "Puducherry"
+  ];
+
+  const [selectedCity,setSelectedCity]=useState("")
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    let apiData = async () => {
+      try {
+        const results = await Promise.allSettled(
+          cities.map(city =>
+            axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=991bc706fd859770a841f08b584b5682&units=metric`)
+          )
+        )
+        const realData = results
+          .filter(res => res.status === "fulfilled")
+          .map(res => res.value.data);
+        setData(realData)
+      }
+      catch (err) {
+        console.log("Error occured");
+
+      }
+    }
+    apiData()
+
+  }, [])
+
+  console.log(data);
+
+  console.log(selectedCity,"selectedcity");
+  let selectedCityIndex =cities.indexOf(selectedCity)
+
+  const selectedCityData = data[selectedCityIndex]
+  console.log(selectedCityData);
+  
+  
+  
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <select name="" id="" onChange={(e)=>setSelectedCity(e.target.value)}>
+        <option value=''>Select city</option>
+        
+        {
+          cities.map((ele,index)=>(
+            <option value={ele} key={index}>{ele}</option>
+          ))
+          
+        }
+      </select>
 
-      <div className="ticks"></div>
+      
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {
+        selectedCityData&&(
+          <div className="card">
+            <h1>name : {selectedCityData.city.name}</h1>
+            <h1>Sunrise : {new Date(selectedCityData.city.sunrise * 1000).toLocaleTimeString()}</h1>
+            <h1>Sunset : {new Date(selectedCityData.city.sunset * 1000).toLocaleTimeString()}</h1>
+            {
+              selectedCityData.list.map((ele,index)=>(
+                <h1>{ele.dt_txt}</h1>
+              ))
+            }
+          </div>
+        )
+      }
     </>
   )
 }
