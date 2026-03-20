@@ -15,8 +15,17 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: black;
+    background-color: rgba(49, 49, 49, 0.432);
     color: white;
+    backdrop-filter: blur(10px);
+    
+}
+
+nav h1{
+    background-image: conic-gradient(from 90deg at 10% 99%, #3e92e1, #2b98f1, #2a4a94, #16209e, #0066c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
 }
 .logo{
     /* border: 1px solid red; */
@@ -30,4 +39,10 @@ nav{
 img{
     width: 100%;
     height: 100%;
+}
+
+@media screen and (max-width:576px) {
+    nav{
+        width: 100%;
+    }
 }
