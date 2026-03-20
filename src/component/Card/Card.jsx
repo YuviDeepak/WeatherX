@@ -18,7 +18,7 @@ const Card = ({ selectedDate, weatherList }) => {
                                 <div className="temperature">
                                     <div className="temp">
                                         <p>Temp. : {ele.main.temp}°C</p>
-                                        <p>Fancies : {ele.main.feels_like}°C</p>
+                                        <p>Apparent : {ele.main.feels_like}°C</p>
                                     </div>
                                     <div className="others">
                                         <p>pressure : {ele.main.pressure}Pa</p>

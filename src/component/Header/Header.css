@@ -23,8 +23,8 @@ nav{
 
 nav h1{
     background-image: conic-gradient(from 90deg at 10% 99%, #3e92e1, #2b98f1, #2a4a94, #16209e, #0066c5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     
 }
 .logo{
