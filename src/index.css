@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap');
+
+:root{
+  --ff:"Datatype";
+}
+
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: var(--ff);
+}
+
+body{
+  min-height: 100vh;
+  background-color: rgba(0, 0, 255, 0.185);
 }

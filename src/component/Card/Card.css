@@ -1,0 +1,74 @@
+.card {
+    /* border: 1px solid red; */
+    /* height: 300px; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: rgb(33, 90, 117);
+    color: white;
+
+}
+
+
+.card .content {
+    /* border: 1px solid rgb(0, 0, 0); */
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.3rem;
+}
+
+.card .time {
+    /* border: 1px solid red; */
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.card .content .temperature {
+    /* border: 1px solid rebeccapurple; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card .content .temperature .temp {
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card .content .others {
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.wind{
+    /* border: 1px solid red; */
+}
+
+.desc{
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.desc .i{
+    /* border: 1px solid red; */
+    width: 100px;
+    height: 100%;
+}
+
+.i img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+}

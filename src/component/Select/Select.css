@@ -1,0 +1,15 @@
+.selectCard{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px
+}
+
+select{
+    height: 40px;
+    width: 250px;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding-left: 15px;
+}
