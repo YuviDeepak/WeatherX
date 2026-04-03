@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card';
 
-const CardGrid = ({ weather }) => {
+const CardGrid = ({ selectedCity,setSelectedCity,weather }) => {
 
   const [selectedDate, setSelectedDate] = useState("");
 
-  let uniqueDays = weather?.list?.reduce((acc, item) => {
+
+    let uniqueDays=weather && weather.list && weather.list.reduce((acc,item)=>{
 
     const [date] = item.dt_txt.split(" ");
 
@@ -29,7 +30,7 @@ const CardGrid = ({ weather }) => {
   return (
     <>
       <div className="se">
-        <h1>Select Day :</h1>
+        <h3>Select Day :</h3>
         <select
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
@@ -48,7 +49,7 @@ const CardGrid = ({ weather }) => {
     </div>
       <div className="cardGrid">
 
-        <Card selectedDate={selectedDate} weatherList={weather.list} />
+        <Card selectedDate={selectedDate} weatherList={weather.list} selectedCity={selectedCity} />
       </div>
     </>
   );

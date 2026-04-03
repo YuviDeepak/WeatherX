@@ -1,23 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Select = ({setSelectedCity}) => {
-    
+const Select = ({ setSelectedCity, selectedCity, country, sc, setSc }) => {
 
-    const cities = ["Tiruchirappalli", "Chennai", "Madurai", "Coimbatore", "Tirunelveli", "Kanyakumari", "Kodaikanal", "Udhagamandalam", "Puducherry"];
+    useEffect(() => {
+        if (sc !== "India") {
+            setSelectedCity(country[sc][0])
+        }
+    }, [sc])
+
 
     return (
-
         <>
-            <div className="selectCard">
-                <h1>Select City :</h1>
-                <select name="" id="" onChange={(e)=>setSelectedCity(e.target.value)}>
-                    {
-                        cities.map((e,index)=>(
-                            <option value={e} key={index}>{e}</option>
-                        ))
-                    }
-                </select>
+            <div className="selectBox">
+                <div className="selectCard">
+                    <h3>Select Country :</h3>
+                    <select name="" id="" value={sc} onChange={(e) => setSc(e.target.value)}>
+                        {
+                            Object.keys(country).map((e, i) => (
+                                <option value={e} key={i}>{e}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className="selectCard">
+                    <h3>Select City :</h3>
+                    <select name="" id="" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+                        {
+                            sc && country[sc]?.map((city, i) => (
+                                <option value={city} key={i}>{city}</option>
+                            ))
+
+                        }
+                    </select>
+                </div>
             </div>
+
         </>
     )
 }

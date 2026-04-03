@@ -1,16 +1,17 @@
 import React from 'react'
 
-const Card = ({ selectedDate, weatherList }) => {
+const Card = ({ selectedDate, weatherList,selectedCity }) => {
 
 
 
     return (
         <>
             {
-                weatherList?.map((ele, index) => (
+               weatherList && weatherList.map((ele, index) => (
                     (ele.dt_txt.split(" ")[0] == selectedDate) ? (
                         <div key={index} className="card">
                             <div className="time">
+                                
                                 <h3>Time : {ele.dt_txt.split(" ")[1]}</h3>
 
                             </div>
