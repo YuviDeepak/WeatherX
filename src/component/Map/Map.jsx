@@ -60,7 +60,7 @@ const Map = ({ selectedCity, weather }) => {
     <div className="mapWrapper">
 
       {/* 📅 SELECT */}
-      <div className="selectBox">
+      <div className="selectBox selectBox1">
         <label>Select Date:</label>
         <select
           value={selectedDate}
