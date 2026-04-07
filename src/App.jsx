@@ -9,6 +9,8 @@ import CardGrid from './component/CardGrid/CardGrid';
 import './component/CardGrid/CardGrid.css'
 import Header from './component/Header/Header';
 import './component/Header/Header.css'
+import "leaflet/dist/leaflet.css";
+import Map from './component/Map/Map';
 
 function App() {
   const [all, setAll] = useState([])
@@ -39,18 +41,7 @@ function App() {
   const [selectedCity, setSelectedCity] = useState("Chennai")
   const [sc, setSc] = useState("India")
 
-  // useEffect(() => {
-  //   if (Object.keys(country).length > 0) {
-  //     if (country["India"]?.length > 0) {
-  //       setSc("India")
-  //       setSelectedCity("Chennai")
-  //     } else {
-  //       const firstCountry = Object.keys(country)[0]
-  //       setSc(firstCountry)
-  //       setSelectedCity(country[firstCountry][0])
-  //     }
-  //   }
-  // }, [country])
+  
 
 
   useEffect(() => {
@@ -66,13 +57,15 @@ function App() {
   }, [selectedCity])
 
   
+  console.log("weather=> ",weather);
   
 
   return (
     <>
       <Header />
       <Select setSelectedCity={setSelectedCity} selectedCity={selectedCity} country={country} sc={sc} setSc={setSc} />
-      <CardGrid selectedCity={selectedCity} setSelectedCity={setSelectedCity} weather={weather} />
+      {/* <CardGrid selectedCity={selectedCity} setSelectedCity={setSelectedCity} weather={weather} /> */}
+      <Map selectedCity={selectedCity} weather={weather}  />
     </>
   )
 }

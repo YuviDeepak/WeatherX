@@ -33,6 +33,7 @@ body {
   overflow-y: auto;        /* allow vertical scroll naturally */
   /* background: url("https://img.freepik.com/free-photo/storm-sea-with-sun-appearing-clouds_1150-18316.jpg") no-repeat center/cover; */
   background-color: black;
+  padding: 30px;
   
   
 }

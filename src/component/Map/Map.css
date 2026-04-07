@@ -1,0 +1,102 @@
+.mapWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Select box */
+.daySelector {
+  margin: 15px 0;
+}
+
+.daySelector select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Map */
+.leaflet-container {
+  width: 90%;
+  height: 400px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* Weather cards */
+.weatherCards {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+/* Card */
+.card {
+  background: #1e1e2f;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 13px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Message */
+.selectMsg {
+  text-align: center;
+  color: gray;
+}
+
+
+.cardContainer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.selectCard {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px
+}
+
+select {
+    height: 30px;
+    width: 250px;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding-left: 15px;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+
+
+option {
+    background-color: rgba(0, 0, 0, 0.945);
+    color: white;
+
+}
+
+option:checked {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.selectBox1 {
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+
+}
